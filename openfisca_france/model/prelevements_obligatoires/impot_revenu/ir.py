@@ -58,7 +58,6 @@ class jour_xyz(Variable):
 
 
 class age(Variable):
-    base_function = missing_value
     unit = 'years'
     value_type = int
     default_value = -9999
@@ -99,7 +98,6 @@ class age(Variable):
 
 
 class age_en_mois(Variable):
-    base_function = missing_value
     value_type = int
     default_value = -9999
     unit = 'months'
