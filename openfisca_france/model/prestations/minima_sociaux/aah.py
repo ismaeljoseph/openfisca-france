@@ -349,7 +349,6 @@ class caah(Variable):
     definition_period = MONTH
     '''
         Complément d'allocation adulte handicapé : complément de ressources ou majoration vie autonome.
-
     '''
     def formula_2015_07_01(individu, period, parameters):
         complement_ressources = individu('complement_ressources', period)

@@ -23,7 +23,7 @@
     complement_ressources: 179.31
     caah: 179.31
 
-- name: 'cas 2: Personne bénéfice de la Majoration pour Vie Autonome'
+- name: 'cas 2: Personne bénéfice de la Majoration pour vie autonome'
   period: 2019-01
   absolute_error_margin: 1
   input:
