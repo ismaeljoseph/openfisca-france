@@ -323,6 +323,7 @@ class aah(Variable):
     calculate_output = calculate_output_add
     value_type = float
     label = u"Allocation adulte handicapé mensualisée"
+    reference = u"https://www.legifrance.gouv.fr/affichCodeArticle.do?cidTexte=LEGITEXT000006073189&idArticle=LEGIARTI000006754198"
     entity = Individu
     definition_period = MONTH
     set_input = set_input_divide_by_period
@@ -411,31 +412,10 @@ class complement_ressources(Variable):
     entity = Individu
     value_type = float
     label = u"Majoration pour la vie autonome"
+    reference = u"https://www.legifrance.gouv.fr/affichCodeArticle.do?cidTexte=LEGITEXT000006073189&idArticle=LEGIARTI000006745305&dateTexte=&categorieLien=cid"
     definition_period = MONTH
-    '''
-    Complément de ressources
 
-        Pour bénéficier du complément de ressources, l’intéressé doit remplir les conditions
-        suivantes :
-        - percevoir l’allocation aux adultes handicapés à taux normal ou en
-           complément d’une pension d’invalidité, d’une pension de vieillesse ou
-           d’une rente accident du travail ;
-        - avoir un taux d’incapacité égal ou supérieur à 80 % ;
-        - avoir une capacité de travail, appréciée par la commission des droits et
-           de l’autonomie (CDAPH) inférieure à 5 % du fait du handicap ;
-        - ne pas avoir perçu de revenu à caractère professionnel depuis un an à la date
-           du dépôt de la demande de complément ;
-        - disposer d’un logement indépendant.
-        A noter : une personne hébergée par un particulier à son domicile n’est pas
-        considérée disposer d’un logement indépendant, sauf s’il s’agit de son conjoint,
-        de son concubin ou de la personne avec laquelle elle est liée par un pacte civil
-        de solidarité.
-
-        Le complément de ressources est destiné aux personnes handicapées dans l’incapacité de
-        travailler. Il est égal à la différence entre la garantie de ressources pour les personnes
-        handicapées (GRPH) et l’AAH.
-    '''
-    def formula_2015_05_01(individu, period, parameters):
+    def formula(individu, period, parameters):
         # Rolling year
         annee_precedente = period.start.period('year').offset(-1)
         prestations = parameters(period).prestations
@@ -468,32 +448,10 @@ class mva(Variable):
     entity = Individu
     value_type = float
     label = u"Majoration pour la vie autonome"
+    reference= u"https://www.legifrance.gouv.fr/affichCodeArticle.do;jsessionid=6E5B97C7E6C7E06666BCFFA11871E70B.tplgfr43s_2?idArticle=LEGIARTI000006745350&cidTexte=LEGITEXT000006073189&dateTexte=20190124"
     definition_period = MONTH
-    '''
-    Majoration pour la vie autonome
 
-        La majoration pour la vie autonome est destinée à permettre aux personnes, en capacité de travailler et
-        au chômage en raison de leur handicap, de pourvoir faire face à leur dépense de logement.
-
-        Conditions d'attribution
-        La majoration pour la vie autonome est versée automatiquement aux personnes qui remplissent les conditions
-        suivantes :
-        - percevoir l'AAH à taux normal ou en complément d'un avantage vieillesse ou d'invalidité ou d'une rente
-        accident du travail,
-        - avoir un taux d'incapacité au moins égal à 80 %,
-        - disposer d'un logement indépendant,
-        - bénéficier d'une aide au logement (aide personnelle au logement, ou allocation de logement sociale ou
-        familiale), comme titulaire du droit, ou comme conjoint, concubin ou partenaire lié par
-        un Pacs au titulaire du droit,
-        - ne pas percevoir de revenu d'activité à caractère professionnel propre.
-
-        Choix entre la majoration ou la garantie de ressources
-        La majoration pour la vie autonome n'est pas cumulable avec la garantie de ressources pour les personnes
-        handicapées.
-        La personne qui remplit les conditions d'octroi de ces deux avantages doit choisir de bénéficier de l'un ou de
-        l'autre.
-    '''
-    def formula_2015_05_01(individu, period, parameters):
+    def formula(individu, period, parameters):
         # Rolling year
         annee_precedente = period.start.period('year').offset(-1)
         prestations = parameters(period).prestations
