@@ -347,9 +347,7 @@ class caah(Variable):
     entity = Individu
     set_input = set_input_divide_by_period
     definition_period = MONTH
-    '''
-        Complément d'allocation adulte handicapé : complément de ressources ou majoration vie autonome.
-    '''
+
     def formula_2015_07_01(individu, period, parameters):
         complement_ressources = individu('complement_ressources', period)
         mva = individu('mva', period)
@@ -415,7 +413,6 @@ class complement_ressources(Variable):
     definition_period = MONTH
 
     def formula(individu, period, parameters):
-        # Rolling year
         annee_precedente = period.start.period('year').offset(-1)
         prestations = parameters(period).prestations
         garantie_ressources = prestations.minima_sociaux.caah.garantie_ressources
@@ -451,7 +448,6 @@ class mva(Variable):
     definition_period = MONTH
 
     def formula(individu, period, parameters):
-        # Rolling year
         annee_precedente = period.start.period('year').offset(-1)
         prestations = parameters(period).prestations
         taux_incapacite_min = prestations.minima_sociaux.aah.taux_incapacite
